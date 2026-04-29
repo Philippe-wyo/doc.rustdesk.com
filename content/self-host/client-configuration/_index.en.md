@@ -42,11 +42,11 @@ Currently, Windows X64, Mac Arm64 / X64, [Linux](https://twitter.com/rustdesk/st
 
 ## 2. Manual Config
 
-In the main RustDesk Client home click on the Menu button [ &#8942; ] next to your ID then click on Network, you can now unlock the settings using elevated privileges and set your `ID`, `Relay`, `API` and `Key`. It's important to note that this `Key` is the public key used for connection encryption, distinct from the license key provided with your Pro version purchase.
+In the main RustDesk Client home click on the Menu button [ &#8942; ] next to your ID then click on Network. You can now unlock the settings using elevated privileges and set your `ID`, `Relay`, `API` and `Key`. It's important to note that this `Key` is the public key used for connection encryption, distinct from the license key provided with your Pro version purchase.
 
 ![](/docs/en/self-host/client-configuration/images/network-config.png)
 
-Enter the `hbbs` host or IP Address in the **ID Server** input box (local side + remote side). The other two addresses can be left blank, RustDesk will automatically deduce (if not specially set), and the Relay Server refers to `hbbr` (port 21117).
+Enter the `hbbs` host or IP Address in the **ID Server** input box (local side + remote side). The other two addresses can be left blank, RustDesk will automatically deduce (if not specifically set), and the Relay Server refers to `hbbr` (port 21117).
 
 e.g.
 
@@ -70,7 +70,7 @@ As a `Pro` user you will additionally be able to retrieve the `Key` from the [we
 
 ### Set `API Server`
 
-This is for `Pro` user only. When you can log in on web console, but fail to log in on RustDesk client, it probably you have not set `API Server` correctly.
+This is for `Pro` user only. When you can log in on web console but fail to log in on RustDesk client, it is probably because you have not set `API Server` correctly.
 
 If your API Server does not run on default `21114` port (you may not add this port to firewall if you come from open source version), please specify `API Server` explicitly.
 e.g. your API Server runs on default HTTPS port, please specify `API Server` with `https://hbbs.example.com`.
@@ -101,4 +101,4 @@ https://github.com/rustdesk/rustdesk-server-pro/discussions/372#discussioncommen
 ## 6. Use command line `--config`
 `rustdesk.exe --config <config-string>`
 
-You can get the config string from web console (you can see it on above picture) or from RustDesk client "Settings → Network" ([here](https://github.com/rustdesk/rustdesk/discussions/7118) is a discussion about this).
+You can get the config string from the web console (you can see it on above picture) or from the RustDesk client "Settings → Network" ([here](https://github.com/rustdesk/rustdesk/discussions/7118) is a discussion about this).
