@@ -45,7 +45,7 @@ This FAQ covers the most common RustDesk Server Pro tasks: installation, convers
 10. Enter your license code purchased in step 1.
 
 ## There is a new version of RustDesk Server Pro out, how can I upgrade?
-You'd better back up data files (sqlite3 files etc.) first, https://github.com/rustdesk/rustdesk-server-pro/discussions/184#discussioncomment-8013375.
+Back up all data files (sqlite3 files etc.) first, https://github.com/rustdesk/rustdesk-server-pro/discussions/184#discussioncomment-8013375.
 - ### If you installed with script (`install.sh`)
 Please run [update.sh](/docs/en/self-host/rustdesk-server-pro/installscript/script/#upgrade).
 - ### Docker Compose
@@ -124,7 +124,7 @@ rustdesk/makepkg               latest    86a981e2e18f   2 months ago   2.23GB
 For more details, check [this](https://www.cherryservers.com/blog/how-to-update-docker-image).
 
 ## I installed with the script, how can I start and stop services?
-The services use systemd so can be started and stopped using `sudo systemctl stop|start|restart rustdesk-hbbs|rustdesk-hbbr` e.g. `sudo systemctl restart rustdesk-hbbs`.
+The services use systemd so it can be started and stopped using `sudo systemctl stop|start|restart rustdesk-hbbs|rustdesk-hbbr` e.g. `sudo systemctl restart rustdesk-hbbs`.
 
 ## I installed with the script, how can I view the Linux logs?
 The logs are stored in `/var/log/rustdesk-server`, you can view them using `tail /var/log/rustdesk-server/hbbs.log` or `tail /var/log/rustdesk-server/hbbs.error`.
@@ -198,7 +198,7 @@ sudo rm /usr/bin/hbbr
 sudo rm -rf /var/lib/rustdesk-server/
 sudo rm -rf /var/log/rustdesk-server/
 ```
-If the script installed Nginx then remove using:
+If the script installed Nginx then remove it using:
 ```sh
 sudo apt remove nginx
 ```
@@ -230,7 +230,7 @@ Start-Process .\rustdesk.exe --silent-install -wait
 ```
 
 ## `Key mismatch` error
-Please configure your client with [correct key](https://rustdesk.com/docs/en/self-host/rustdesk-server-pro/relay/).
+Please configure your client with the [correct key](https://rustdesk.com/docs/en/self-host/rustdesk-server-pro/relay/).
 
 ## `Failed to connect to relay server` error
 Please make sure `hbbr` is running. More information about `hbbr`, you can find [here](https://rustdesk.com/docs/en/self-host/rustdesk-server-oss/install/).
@@ -247,11 +247,11 @@ https://github.com/rustdesk/rustdesk/discussions/6576
     - Your domain registrar's control panel (recommended)
     - [DNS providers](https://en.wikipedia.org/wiki/List_of_managed_DNS_providers)
 
-For example, if you buy a domain name `example.com` from `Namesilo` and your server's IP address is `123.123.123.123`, you want to use `rustdesk.example.com` subdomain as your HTTPS web console address. You need to open [link](https://www.namesilo.com/account_domains.php), click the button with tooltip `Manage dns for the domain`, add add a `A` record with the hostname name `rustdesk` and the IP address of your server.
+For example, if you buy a domain name `example.com` from `Namesilo` and your server's IP address is `123.123.123.123`, you want to use `rustdesk.example.com` subdomain as your HTTPS web console address. You need to open this [link](https://www.namesilo.com/account_domains.php), click the button with tooltip `Manage dns for the domain`, add add a `A` record with the hostname name `rustdesk` and the IP address of your server.
 ![](/docs/en/self-host/rustdesk-server-pro/faq/images/namesilo-dns-button.png)
 ![](/docs/en/self-host/rustdesk-server-pro/faq/images/namesilo-add-a-record.png)
 ![](/docs/en/self-host/rustdesk-server-pro/faq/images/namesilo-dns-table.png)
-* It takes some time for DNS to take effect, https://www.whatsmydns.net and check whether the domain name has been resolved to your server's IP address. Step 6 depends on the correct resolve result. In the following steps, replace `YOUR_DOMAIN` with your subdomain, e.g. `rustdesk.example.com`.
+* It takes some time for DNS to take effect. Goto https://www.whatsmydns.net and check whether the domain name has been resolved to your server's IP address. Step 6 depends on the correct resolve result. In the following steps, replace `YOUR_DOMAIN` with your subdomain, e.g. `rustdesk.example.com`.
 
 ### 2. Install Nginx
 * Debian/Ubuntu: `sudo apt-get install nginx`
@@ -261,18 +261,18 @@ For example, if you buy a domain name `example.com` from `Namesilo` and your ser
 * Gentoo: `sudo emerge -av nginx`
 * Appine: `sudo apk add --no-cache nginx`
 
-Run `nginx -h` to check whether it has been installed successfully.
+Run `nginx -h` to check if it has been installed successfully.
 
 ### 3. Install Certbot
 * Method 1: If `snap` is installed, run `sudo snap install certbot --classic`.
 * Method 2: Using `python3-certbot-nginx` instead, e.g. `sudo apt-get install python3-certbot-nginx` for Ubuntu.
 * Method 3: If the above two methods failed, try install `certbot-nginx`, e.g. `sudo yum install certbot-nginx` for CentOS 7.
 
-Run `certbot -h` to check whether it has been installed successfully.
+Run `certbot -h` to check whether f it has been installed successfully.
 
 ### 4. Config Nginx
 There are two ways:
-* If directory `/etc/nginx/sites-available` and `/etc/nginx/sites-enabled` exists, replace `YOUR_DOMAIN` of the following command with your domain name and run it.
+* If the directoryies `/etc/nginx/sites-available` and `/etc/nginx/sites-enabled` exists, replace `YOUR_DOMAIN` in the following command with your domain name and run it.
 ```sh
 cat > /etc/nginx/sites-available/rustdesk.conf << EOF
 server {
@@ -289,7 +289,7 @@ Then run `sudo ln -s /etc/nginx/sites-available/rustdesk.conf /etc/nginx/sites-e
 
 Run `cat /etc/nginx/sites-available/rustdesk.conf` to make sure its content is correct.
 
-* If directory `/etc/nginx/sites-available` and `/etc/nginx/sites-enabled` don't exist and directory `/etc/nginx/conf.d` exists, replace `YOUR_DOMAIN` of the following command with your domain name and run it.
+* If the directories `/etc/nginx/sites-available` and `/etc/nginx/sites-enabled` don't exist and the directory `/etc/nginx/conf.d` exists, replace `YOUR_DOMAIN` in the following command with your domain name and run it.
 ```sh
 cat > /etc/nginx/conf.d/rustdesk.conf << EOF
 server {
@@ -315,7 +315,7 @@ sudo ufw --force reload
 ```
 
 ### 6. Generate SSL certificate
-Replace `$YOUR_DOMAIN` with your domain name, then run
+Replace `$YOUR_DOMAIN` with your domain name, then run:
 `sudo certbot --nginx --cert-name $YOUR_DOMAIN --key-type ecdsa --renew-by-default --no-eff-email --agree-tos --server https://acme-v02.api.letsencrypt.org/directory -d $YOUR_DOMAIN`.
 
 If it prompts `Enter email address (used for urgent renewal and security notices)`, enter your email address.
@@ -352,7 +352,7 @@ Here are some common errors:
 
 * The console prints `Successfully deployed certificate for YOUR_DOMAIN to /etc/nginx/.../default`  rather than `Successfully deployed certificate for YOUR_DOMAIN to /etc/nginx/.../rustdesk.conf`.
 
-The reason may be Certbot doesn't find the `rustdesk.conf` file, you can try one of the following solutions:
+The reason may be that Certbot doesn't find the `rustdesk.conf` file> You can try one of the following solutions:
 - Check the result of the step 5, run `sudo service nginx restart`.
 - Copy the server configs `server{...}` which contain `YOUR_DOMAIN` to `rustdesk.conf`, and change `location{...}` to the content below.
 
@@ -375,12 +375,12 @@ Solution: it may be caused by firewall, please refer to https://rustdesk.com/doc
 Notice: Run `sudo service nginx restart` if you change the `rustdesk.conf` manually.
 
 ### 7. Login to the web page
-* Open `https://YOUR_DOMAIN` in the browser, log in using the default user name "admin" and password "test1234", then change the password to your own.
+* Open `https://YOUR_DOMAIN` in the browser, log in using the default user name "admin" and password "test1234", then change the password with your own.
 
 ### 8. Add WebSocket Secure (WSS) support for the id server and relay server to enable secure communication for all platforms.
 
 Add the following configuration to the first `server` section of the `/etc/nginx/.../rustdesk.conf` file, then restart the `Nginx` service. 
-The web client can be accessed via `https://YOUR_DOMAIN/web`. Custom clients can use WebSocket by setting `allow-websocket=Y` in the advanced options. If the custom client with WebSocket enabled is used, it will not utilize TCP/UDP and can only connect through a relay (except for direct IP connections). If only this WebSocket-enabled client is used, the server can close ports 21114 to 21119 and only keep port 443 open.
+The web client can be accessed via `https://YOUR_DOMAIN/web`. Custom clients can use WebSocket by setting `allow-websocket=Y` in the advanced options. If the custom client with WebSocket enabled is used, it will not utilize TCP/UDP and can only connect through a relay (except for direct IP connections). If only the WebSocket-enabled client is used, the server can close ports 21114 to 21119 and only keep port 443 open.
 
 
 
@@ -465,12 +465,12 @@ server {
 ```
 
 {{% notice note %}}
-If you have previously deployed for web clients and want to use it across all platforms, you need to add `proxy_read_timeout`.
+If you have previously deployed web clients and you want to use it across all platforms, you need to add `proxy_read_timeout`.
 {{% /notice %}}
 
 ### 9. Bypass CORS if using RustDesk public web client `https://rustdesk.com/web`
 
-You need to add below in the `location /` section of the `/etc/nginx/.../rustdesk.conf` to bypass CORS limitation of browsers. Skip this step if you are using your own web client.
+You need to add what is below below in the `location /` section of the `/etc/nginx/.../rustdesk.conf` to bypass CORS limitation of browsers. Skip this step if you are using your own web client.
 
 ```
         if ($http_origin ~* (https?://(www\.)?rustdesk\.com)) {
@@ -503,15 +503,15 @@ sudo restorecon -v '/usr/bin/hbbr'
 
 ## Firewall
 
-### Firewall of cloud
-If you run on AWS/Azure/Google/DigitalOcean cloud, please open UDP (21116) and TCP (21114-21119) inbound port on cloud vendor's dashboard.
+### Firewall on Cloud
+If you run on AWS/Azure/Google/DigitalOcean Cloud, please open UDP (21116) and TCP (21114-21119) inbound port on cloud vendor's dashboard.
 
 - [AWS] https://docs.aws.amazon.com/network-firewall/latest/developerguide/getting-started.html
 - [Azure] https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview
 - [Google] https://cloud.google.com/firewall/docs/firewalls
 - [DigitalOcean] https://docs.digitalocean.com/products/networking/firewalls/
 
-### Firewall of on-premise server
+### Firewall for on-premise server
 RustDesk set firewall with `ufw`. It may not work on some distros like CentOS 9, you can try with `firewall-cmd`:
 
 ```sh
@@ -539,7 +539,7 @@ sudo firewall-cmd --permanent --add-port=443/tcp
 After above, run `sudo firewall-cmd --reload` to reload firewall.
 
 ## After changing the admin password in the web console I cannot log in. Is there a simple way to reset the password?
-1. Ensure you have `rustdesk-utils` installed. If not you can get it [here](https://github.com/rustdesk/rustdesk-server-pro). Also you need to execute the command from the folder where the database is, i.e. `/var/lib/rustdesk-server`.
+1. Ensure you have `rustdesk-utils` installed. If not,  you can get it [here](https://github.com/rustdesk/rustdesk-server-pro). You will need to execute the command from the folder where the database is, i.e. `/var/lib/rustdesk-server`.
 2. The command is `rustdesk-utils set_password username password`. If it works it will say *Done*.
 
 You also have the following other commands `genkeypair`, `validatekeypair [public key] [secret key]`, `doctor [rustdesk-server]`, `reset_email_verification` and `reset_2fa_verification` which can be used with `rustdesk-utils`.
