@@ -50,7 +50,7 @@ The default port of the web console is 21114. Enter `http://<server ip>:21114` i
 
 If you need HTTPS support, please install a web server such as `Nginx` or use `IIS` for Windows.
 
-After logging in please be sure to change the password, select `Settings` in the account menu in the upper right corner to enter the password modification page, as shown in the following figure. You can also create another administrator account and delete this one. You'd better enable email login verification.
+After logging in please be sure to change the password, select `Settings` in the account menu in the upper right corner to enter the password modification page, as shown in the following figure. You can also create another administrator account and delete this one. For enhanced security, it is strongly recommended to enable email-based login verification.
 
 <a name=console-home></a>
 ![](/docs/en/self-host/rustdesk-server-pro/console/images/console-home.png?v2)
