@@ -42,7 +42,7 @@ Here is a discussion about [Should you self-host a rustdesk server?](https://www
 
 ## Ports Required
 
-Ports required for RustDesk Server self-hosting depends largely on your environment and what you want to do with RustDesk. The Examples shown throughout the docs will generally have all ports suggested to be opened.
+Ports required for RustDesk Server self-hosting depends largely on your environment and what you want to do with RustDesk. The examples shown throughout the docs will generally have all ports suggested to be opened.
 
 Core Ports: \
 TCP `21114-21119` \
